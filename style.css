@@ -1,0 +1,213 @@
+/* Variáveis CSS para facilitar a manutenção */
+:root {
+    --primary-color: #002bea; /* Azul principal */
+    --secondary-color: #03dac6; /* Ciano para ações */
+    --background-dark: #121212; /* Fundo escuro */
+    --background-medium: #1b1b1b; /* Fundo médio */
+    --card-background: #2c2c2c; /* Fundo dos cards */
+    --text-light: #f0f0f0; /* Texto claro */
+    --text-medium: #86dbfc; /* Texto secundário azul claro */
+    --text-dark: #000; /* Texto escuro (para botões) */
+    --shadow-color: rgba(0, 0, 0, 0.4); /* Cor da sombra */
+    --border-radius: 8px;
+    --transition-speed: 0.3s ease;
+}
+
+/* Reset básico para melhor consistência entre navegadores */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', 'Arial', sans-serif; /* Adicionei Inter para um toque moderno, ou Arial */
+    background: var(--background-medium);
+    color: var(--text-light);
+    line-height: 1.6;
+    min-height: 100vh; /* Garante que o body ocupe a altura total da viewport */
+    display: flex;
+    flex-direction: column; /* Para o footer ficar sempre embaixo */
+}
+
+/* --- */
+
+header {
+    background: var(--primary-color);
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px var(--shadow-color); /* Sombra mais pronunciada */
+    position: sticky; /* Sticky header */
+    top: 0;
+    z-index: 1000; /* Garante que o header fique acima de outros elementos */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.8em; /* Tamanho maior para o título */
+    letter-spacing: 1px;
+    color: var(--text-light);
+    text-shadow: 2px 2px 4px var(--shadow-color);
+}
+
+/* --- */
+
+main {
+    flex-grow: 1; /* Permite que o main ocupe o espaço restante */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Min-width um pouco maior */
+    gap: 30px; /* Aumento do espaçamento entre os cards */
+    padding: 30px; /* Aumento do padding geral */
+    max-width: 1200px; /* Limite a largura máxima para melhor leitura */
+    margin: 30px auto; /* Centraliza o main */
+}
+
+/* --- */
+
+.conta {
+    background: var(--card-background);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 6px 15px var(--shadow-color); /* Sombra mais forte para os cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Para espaçar o conteúdo e o botão */
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed); /* Transição suave no hover */
+}
+
+.conta:hover {
+    transform: translateY(-5px); /* Efeito de elevação no hover */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+.conta h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--text-medium);
+    font-size: 1.8em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separador sutil */
+    padding-bottom: 10px;
+}
+
+.conta p {
+    margin: 8px 0;
+    font-size: 1.1em;
+    color: var(--text-light);
+}
+
+.conta .descricao {
+    font-size: 0.95em;
+    color: rgba(240, 240, 240, 0.7);
+    margin-bottom: 15px; /* Espaço para o botão */
+}
+
+/* --- */
+
+button {
+    background: var(--secondary-color);
+    border: none;
+    padding: 12px 20px; /* Padding maior */
+    color: var(--text-dark);
+    font-weight: bold;
+    font-size: 1.1em; /* Tamanho da fonte maior */
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background var(--transition-speed), transform 0.1s ease; /* Transição para background e transform */
+    width: 100%; /* Botão ocupa a largura total do card */
+    margin-top: 15px; /* Garante espaçamento em relação ao conteúdo */
+}
+
+button:hover {
+    background: #00bfa5; /* Tom um pouco mais escuro no hover */
+    transform: translateY(-2px); /* Pequeno efeito de elevação */
+}
+
+button:active {
+    transform: translateY(0); /* Volta à posição original ao clicar */
+    background: #008f82; /* Tom mais escuro no clique */
+}
+
+button:disabled {
+    background: #555;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* --- */
+
+footer {
+    background: var(--background-dark);
+    text-align: center;
+    padding: 20px;
+    font-size: 0.95em;
+    color: #a0a0a0; /* Cor um pouco mais clara para o texto do footer */
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Borda superior sutil */
+    margin-top: auto; /* Garante que o footer fique na parte inferior */
+}
+
+footer a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+
+footer a:hover {
+    color: #00bfa5;
+    text-decoration: underline;
+}
+
+/* --- */
+
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.2em;
+    }
+
+    main {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .conta {
+        padding: 18px;
+    }
+
+    .conta h2 {
+        font-size: 1.6em;
+    }
+
+    button {
+        padding: 10px 15px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 20px 15px;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    main {
+        padding: 15px;
+        gap: 20px;
+    }
+
+    .conta {
+        padding: 15px;
+    }
+
+    .conta p {
+        font-size: 1em;
+    }
+
+    footer {
+        font-size: 0.85em;
+        padding: 15px;
+    }
+}
